@@ -9,13 +9,14 @@ public class HelloController {
 
 	//Method  = GET
 	//Action  = ful   //calling this
-	@GetMapping("/ful")
+	@GetMapping("/login")
 	public String aclass() {
 		return "index";  
 		//here, you do not give the extension, 
 		//otherwise that will be depended upon 
 		//that specific extension, which is not good practice
-		
-		
+		/*
+		 * @PostMapping("/login") public String aclass() { return "index";
+		 */
 	}
 }
