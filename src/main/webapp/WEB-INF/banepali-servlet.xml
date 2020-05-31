@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
-<!-- This is the .xml file through which the DispatcherWebServlet will take the inputs -->
-<!-- DispatcherWebServlet will read this .xml file -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:context="http://www.springframework.org/schema/context"
@@ -17,20 +14,38 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
 
+<!-- ********************************************************************************* -->
+<!-- This is the .xml file through which the DispatcherWebServlet will take the inputs -->
+<!-- DispatcherWebServlet will read this .xml file -->
+<!-- ********************************************************************************* -->
+ 
+ 
  
     <!-- Enabling all the spring mvc features -->
 	<mvc:annotation-driven />
  
-	<!-- This is the package name where we keep out model/controller
-	DispatcherWebServlet asks which package you will use of the business logics(Works usually done in the Servlet in SpringPractise Project) -->
-	<context:component-scan	base-package="com.banepali.controller" />  <!-- This controller is the MODEL(business layer)  -->
-
+ 
+ 
+	<!-- This is the package name where we keep out model/controller/business logics 
+	DispatcherWebServlet asks  which package you will use of the business logics(Works/methods usually called in the Servlet in SpringPractise Project)
+	This controller is the MODEL(business layer) -->
+	
+	<context:component-scan	base-package="com.banepali.controller" />
+	
+	
+	
+	<mvc:resources mapping = "/images/**" location = "/images/" />  
+	<!-- ** meaning..anything inside the "Images" folder -->
+	
+	
 	<!-- Hello I am using JSP -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.JstlView" />
 		<property name="prefix" value="/WEB-INF/pages/" />
+		<!-- 	<property name="prefix" value="/" />This takes the called page from the "src/main/webapp",
+				but when you give the path like above, you can make the folder  -->
 		<property name="suffix" value=".jsp" />
 	</bean>
 

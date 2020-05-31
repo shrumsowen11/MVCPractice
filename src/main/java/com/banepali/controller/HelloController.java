@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HelloController {
 
 	//Method  = GET
-	//Action  = ful   //calling this
-	@GetMapping("/login")
+	//Action  = index   //calling this in website
+	@GetMapping("/index")
 	public String aclass() {
 		return "index";  
 		//here, you do not give the extension, 
