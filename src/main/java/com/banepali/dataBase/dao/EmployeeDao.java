@@ -4,11 +4,13 @@ import java.sql.Time;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.ui.Model;
+
 import com.banepali.dataBase.dao.entity.EmployeeEntity;
 
 public interface EmployeeDao {
 
-    String save(EmployeeEntity entity);
+	void save(EmployeeEntity entity, Model model);
 
     List<EmployeeEntity> findAll();
 	List<String> findAllUserId();
@@ -19,22 +21,23 @@ public interface EmployeeDao {
     EmployeeEntity employeeByUserId(String userId);
 	Optional<EmployeeEntity> optionalEmployeeByEmail(String email);
 
-    Optional<EmployeeEntity> employeeLogin(String email, String password);
+    EmployeeEntity employeeLogin(String email, String password);
     
-    String update(EmployeeEntity entity);
-	String updatePassword(String email, String password);
-	String updateEmployeeByUserId(EmployeeEntity entity);
-	String updateEmployeeActiveStatus(String userId);
+    void update(EmployeeEntity entity);
+	void updatePassword(String email, String password);
+	void updateEmployeeActiveStatus(String userId);
 
     
     
-    int deleteById(int eID);
-	int deleteByEmail(String email);
+    void deleteById(int eID);
+	void deleteByEmail(String email);
 
 	int getIncrementedEId();
 
 	Time getStartTime();
 	Time getEndTime();
+
+	
 
 
 
