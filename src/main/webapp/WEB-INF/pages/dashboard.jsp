@@ -26,11 +26,11 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 
 <header class = "header">
 	<b style = " position: relative;  left: 50px; color:white"><br/>Hello! ${sessionScope.userData.name}</b> 
-	<a href="showAllContactInfo"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
+	<a href="${pageContext.request.contextPath}/showAllContactInfo"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
 			<button type="button" class="btn btn-warning" style="position: absolute; top:5px; right: 90px;">Contact Us</button>
 		</a>
 		<!-- here I got the position of my text to be in the left side of the screen, so chose position: "relative" and for the buttons "Contact us and Logout" in the right side of the screen, so chose the position: "absolute"  -->
-	<a href="logout"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
+	<a href="${pageContext.request.contextPath}/logout"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
 			<button type="button" class="btn btn-danger" style="position: absolute; top:5px; right: 10px;">LogOut</button>
 		</a> <!-- Add a welcome message we the name in it --></header>
 <br/>
@@ -52,7 +52,7 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 				<a href="showAllEmployees"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
 			<button type="button" class="btn btn-info">Employees</button>
 		</a>
-		<a href="register.jsp">
+		<a href="${pageContext.request.contextPath}/register">
 					<button type="button" class="btn btn-success">Register/Sign Up</button>
 				</a>
 					<a href="showAllEmployeesBlockTime"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
