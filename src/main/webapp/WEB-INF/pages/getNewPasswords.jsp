@@ -58,7 +58,7 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 
 		<div class="form-group" style="width: 50%">
 
-			<form action="updatePasswordEqualityServlet" method = "post">
+			<form action="updatePasswordEquality" method = "post">
 				<%-- <%String email = (String) request.getParameter("temail");%> --%>
 				<label for="password" style="color:white"> Enter a new password*: </label> 
 				<input type="password" class="form-control" name="password1" required

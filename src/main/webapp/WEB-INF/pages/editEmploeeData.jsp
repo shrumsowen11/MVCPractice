@@ -40,7 +40,7 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 		
 		<div class ="form-group" style = "width: 50%">
 		
-		<form action = "updateEmployeeDataServlet">   <!-- whenever the submit button is clicked, then this page is called -->
+		<form action = "updateEmployeeData">   <!-- whenever the submit button is clicked, then this page is called -->
 		
 		<!-- In order to put the hidden values or data somewhere in the jsp file, do as following  -->
 		

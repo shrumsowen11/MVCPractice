@@ -1,8 +1,8 @@
 package com.banepali.dataBase.dao;
 
-import java.sql.*;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.ui.Model;
 
 import com.banepali.dataBase.dao.entity.EmployeeEntity;
 import com.banepali.dataBase.utils.SQLQueries;
@@ -32,7 +31,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	
 	
 	@Override
-	public void save(EmployeeEntity entity, Model model) {
+	public void save(EmployeeEntity entity) {
 		Object[] entityData = {entity.geteID(), entity.getUserId(),entity.getPassword(),entity.getName(),entity.getEmail(),new Date(entity.getDate().getTime()),entity.getMobile(),entity.getSalary(),entity.getSsn(),
 				entity.getCreateDate(), entity.getUpdateDate()};
 		jdbcTemplate.update(SQLQueries.INSERT_IN_EMP_TBL,entityData);

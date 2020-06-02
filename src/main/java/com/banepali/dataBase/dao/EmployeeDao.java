@@ -10,7 +10,7 @@ import com.banepali.dataBase.dao.entity.EmployeeEntity;
 
 public interface EmployeeDao {
 
-	void save(EmployeeEntity entity, Model model);
+	void save(EmployeeEntity entity);
 
     List<EmployeeEntity> findAll();
 	List<String> findAllUserId();
@@ -36,6 +36,8 @@ public interface EmployeeDao {
 
 	Time getStartTime();
 	Time getEndTime();
+
+	
 
 	
 

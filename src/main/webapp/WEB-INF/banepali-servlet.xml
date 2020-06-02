@@ -24,6 +24,8 @@
     <!-- Enabling all the spring mvc features -->
 	<mvc:annotation-driven />
  
+ 
+ 
    <bean id="dataBaseConnectorUtil" 
       class = "org.springframework.jdbc.datasource.DriverManagerDataSource">
       <property name = "driverClassName" value = "com.mysql.jdbc.Driver"/>
@@ -32,27 +34,33 @@
       <property name = "password" value = ""/>
    </bean>
    
+   
+   
    <bean id="jdbcTemplateForConnection" class="org.springframework.jdbc.core.JdbcTemplate">
 	   <property name="dataSource" ref="dataBaseConnectorUtil"/>
 	</bean>
+ 
+ 
  
 	<!-- This is the package name where we keep out model/controller/business logics 
 	DispatcherWebServlet asks  which package you will use of the business logics(Works/methods usually called in the Servlet in SpringPractise Project)
 	This controller is the MODEL(business layer) -->
 	
+	
+	
 	<context:component-scan	base-package="com.banepali.controller" />
 	<context:component-scan	base-package="com.banepali.dataBase.dao" />
+	<context:component-scan	base-package="com.banepali.service" />
 	<!-- After the bean is made, for the package "com.banepali.dataBase.dao", 
 	then OBJECTS/BEANS of the classes which are made in that package are created
 	and due to which we have the benefits of using the @Autowired -->
+	
 	
 	
 	<mvc:resources mapping = "/Images/**" location = "/Images/" />  
 	<!-- ** meaning..anything inside the "Images" folder -->
 	
 	
-	<mvc:resources mapping = "/css/**" location = "/css/" />  
-	<!-- ** meaning..anything inside the "Images" folder -->
 	
 	
 	<!-- Hello I am using JSP -->

@@ -26,11 +26,11 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 
 <header class = "header">
 	<b style = " position: relative;  left: 50px; color:white"><br/>Hello! ${sessionScope.userData.name}</b> 
-	<a href="showAllContactInfoServlet"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
+	<a href="showAllContactInfo"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
 			<button type="button" class="btn btn-warning" style="position: absolute; top:5px; right: 90px;">Contact Us</button>
 		</a>
 		<!-- here I got the position of my text to be in the left side of the screen, so chose position: "relative" and for the buttons "Contact us and Logout" in the right side of the screen, so chose the position: "absolute"  -->
-	<a href="logoutServlet"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
+	<a href="logout"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
 			<button type="button" class="btn btn-danger" style="position: absolute; top:5px; right: 10px;">LogOut</button>
 		</a> <!-- Add a welcome message we the name in it --></header>
 <br/>
@@ -46,16 +46,16 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 				<!--****Make the connection to the preferred DataBase and Start Xamppp****  -->
  
 		
-		<a href="showProfileServlet?email=${sessionScope.userData.email}">
+		<a href="showProfile?email=${sessionScope.userData.email}">
 					<button type="button" class="btn btn-primary">Profile</button>
 				</a>
-				<a href="showAllEmployeesServlet"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
+				<a href="showAllEmployees"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
 			<button type="button" class="btn btn-info">Employees</button>
 		</a>
 		<a href="register.jsp">
 					<button type="button" class="btn btn-success">Register/Sign Up</button>
 				</a>
-					<a href="showAllEmployeesBlockTimeServlet"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
+					<a href="showAllEmployeesBlockTime"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
 			<button type="button" class="btn btn-primary">Block Time</button>
 		</a>
 		

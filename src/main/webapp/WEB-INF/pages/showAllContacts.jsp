@@ -55,7 +55,7 @@
  <body
 	style="background-image: url(Images/chinaTemple.jpg); background-size:cover; background-attachment:fixed; height:100%; width:100%">
 	<header class = "header">
-		<a href="logoutServlet"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
+		<a href="logout"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
 			<button type="button" class="btn btn-danger" style="position: absolute; top:5px; right: 10px;">LogOut</button>
 		</a> <!-- Add a welcome message we the name in it --></header>
 	

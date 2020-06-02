@@ -51,13 +51,13 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 
 		<div class="form-group" style="width: 50%">
 
-			<form action="validateEmailServlet" method="post">
+			<form action="getNewPasswords" method="post">
 
 			<!-- when you do not write this "method", then automatically, it calls the doGet() method and this get method will show all the data(password also) in the browser title. -->
 			<!--methods are "post(secured), put, delete, patch, get(default and not secure)"  -->
 			<!-- whenever the submit button is clicked, then this page is called -->
 
-			<label for="email" style="color:white"> Email Address*: </label> <input type="email"
+			<label for="email" style="color:white"> Email Address* </label> <input type="email"
 				class="form-control" name="temail" required placeholder="Enter your Email">
 				<!-- here putting "required makes the input field essential and input cannot just hit the "Search" button. 
 				clicking "Search" button, without entering data, wont let the user go forward, asks for data to the user.  -->

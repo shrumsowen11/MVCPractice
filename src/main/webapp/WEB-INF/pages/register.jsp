@@ -40,32 +40,32 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 		
 		<div class ="form-group" style = "width: 50%">
 		
-		<form action = "registerProcessServlet">   <!-- whenever the submit button is clicked, then this page is called -->
+		<form action = "register">   <!-- whenever the submit button is clicked, then this page is called -->
 			
- 			<label for = "userid" style="color:white" > UserId*: </label>
+ 			<label for = "userid" style="color:white" > UserId* </label>
 			<input type = "text" class = "form-control" name = "userid" required placeholder = "Enter your UserID">
 			<br/>
-			<label for = "password" style="color:white"> Password*: </label>
+			<label for = "password" style="color:white"> Password* </label>
 			<input type = "password" class = "form-control" name = "password" required placeholder = "Enter strong password">
 			<br/>
 			
-			<label for = "name" style="color:white"> Name*: </label>
+			<label for = "name" style="color:white"> Name* </label>
 			<input type = "text" class = "form-control" name = "name" required placeholder = "Enter your name">
 			<br/>
 			
-			<label for = "email" style="color:white"> Email*: </label>
+			<label for = "email" style="color:white"> Email* </label>
 			<input type = "email" class = "form-control" name = "email" required placeholder = "Enter your email">
 			<br/>
 			
-			<label for = "dob" style="color:white"> Date of Birth*: </label>
+			<label for = "dob" style="color:white"> Date of Birth* </label>
 			<input type = "date" class = "form-control" name = "dob" required placeholder = "Enter your date of birth">
 			<br/>
 			
-			<label for = "mobile" style="color:white"> Mobile: </label>
+			<label for = "mobile" style="color:white"> Mobile </label>
 			<input type = "tel" class = "form-control" name = "mobile"  required placeholder = "Enter your mobile number">
 			<br/>
 			
-			<label for = "salary" style="color:white"> Salary Range: </label>
+			<label for = "salary" style="color:white"> Salary Range </label>
 			<select class = "form-control" name = "salary" required>
 						<option selected >0</option>
 						<option>500</option>
@@ -81,11 +81,11 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 			</select>
 			<br/>
 			
-			<label for = "ssn" style="color:white"> SSN*: </label>
+			<label for = "ssn" style="color:white"> SSN* </label>
 			<input type = "number" class = "form-control" name = "ssn" required placeholder = "Enter your ssn">
 			<br/>
 			
-			<a href = "index.jsp">	
+			<a href = "index">	
 				<button type="button" class="btn btn-primary">Log In</button>
 				 </a>
 				<button type="submit" class="btn btn-success">Register/Sign Up</button>

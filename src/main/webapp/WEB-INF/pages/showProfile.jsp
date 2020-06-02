@@ -63,7 +63,7 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 		<a href="dashboard.jsp">
 			<button type="button" class="btn btn-success">Go Back</button>
 		</a>
-		<a href="logoutServlet"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
+		<a href="logout"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
 			<button type="button" class="btn btn-warning">LogOut</button>
 		</a>
 		<br/>

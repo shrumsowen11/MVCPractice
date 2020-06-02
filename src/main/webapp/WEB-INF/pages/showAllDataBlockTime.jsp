@@ -64,13 +64,13 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 	<div class="container mb-3 mt-3">
 	<font class="myTextStyle" face = "Showcard Gothic" size = "5" style="color: #00ffaca6; ">WARLIONS</font><br/>
 		<!--  margin bottom and margin top == 3-->
-		<a href="showAllEmployeesServlet"> <img src="Images/beatifulScene.jfif"
+		<a href="showAllEmployees"> <img src="Images/beatifulScene.jfif"
 			style="height: 180px">
 		</a>
 		<a href="register.jsp">
 					<button type="button" class="btn btn-success">Register/Sign Up</button>
 				</a>
-		<a href="logoutServlet"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
+		<a href="logout"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
 			<button type="button" class="btn btn-warning">LogOut</button>
 		</a>
 		
@@ -129,7 +129,7 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 					<td>${entity.mobile}</td>
 					<td>
 					<c:if test="${entity.email !=sessionScope.userData.email}">
-					<a href="deletePersonServlet?email=${entity.email}	">
+					<a href="deletePerson?email=${entity.email}	">
 							<!-- We are making a Servlet class named "deletePersonServlet" and "?" -> What you want to send as 
 						to that Servlet Class "email=" and value of the email, which is being sent -->
 
@@ -142,7 +142,7 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 					</a>
 					</c:if>
 					<!--  Whenever you send hyperlink, the method doGet() is called. -->
-					<a href = "getEmployeeDataForEditServlet?userId=${entity.userId}" >
+					<a href = "getEmployeeDataForEdit?userId=${entity.userId}" >
 					<button class="myBtn editBtn"><i class="fa fa-edit fa-sm"></i></button>
 					</a>
 					
@@ -154,7 +154,7 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 					<td>
 					
 					<c:if test="${entity.active == 'YES'}">
-					<a href = "changeEmployeeActiveSessionServlet?userId=${entity.userId}" ><!--  Whenever you send hyperlink, the method doGet() is called. -->
+					<a href = "changeEmployeeActiveSession?userId=${entity.userId}" ><!--  Whenever you send hyperlink, the method doGet() is called. -->
 					<button class="myBtn unlockBtn"><i class="fa fa-unlock fa-sm"></i>
 						</button>
 					
@@ -164,7 +164,7 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 					
 					
 					<c:if test="${entity.active == 'NO'}"><!--  Whenever you send hyperlink, the method doGet() is called. -->
-					<a href = "changeEmployeeActiveSessionServlet?userId=${entity.userId}" ><!--  Whenever you send hyperlink, the method doGet() is called. -->
+					<a href = "changeEmployeeActiveSession?userId=${entity.userId}" ><!--  Whenever you send hyperlink, the method doGet() is called. -->
 					
 					<button class="myBtn lockBtn"><i class="fa fa-lock fa-sm"></i> </button> 
 					</a>					
