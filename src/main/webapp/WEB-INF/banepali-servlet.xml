@@ -59,6 +59,9 @@
 	
 	<mvc:resources mapping = "/Images/**" location = "/Images/" />  
 	<!-- ** meaning..anything inside the "Images" folder -->
+	<mvc:resources mapping = "/css/**" location = "/css/" />  
+	
+		 
 	
 	
 	

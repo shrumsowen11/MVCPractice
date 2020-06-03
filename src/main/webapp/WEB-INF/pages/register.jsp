@@ -40,10 +40,10 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 		
 		<div class ="form-group" style = "width: 50%">
 		
-		<form action = "register">   <!-- whenever the submit button is clicked, then this page is called -->
+		<form action = "${pageContext.request.contextPath}/rregister" method = "post">   <!-- whenever the submit button is clicked, then this page is called -->
 			
  			<label for = "userid" style="color:white" > UserId* </label>
-			<input type = "text" class = "form-control" name = "userid" required placeholder = "Enter your UserID">
+			<input type = "text" class = "form-control" name = "userId" required placeholder = "Enter your UserID">
 			<br/>
 			<label for = "password" style="color:white"> Password* </label>
 			<input type = "password" class = "form-control" name = "password" required placeholder = "Enter strong password">
@@ -58,7 +58,7 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 			<br/>
 			
 			<label for = "dob" style="color:white"> Date of Birth* </label>
-			<input type = "date" class = "form-control" name = "dob" required placeholder = "Enter your date of birth">
+			<input type = "date" class = "form-control" name = "date" required placeholder = "Enter your date of birth">
 			<br/>
 			
 			<label for = "mobile" style="color:white"> Mobile </label>
@@ -85,7 +85,7 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 			<input type = "number" class = "form-control" name = "ssn" required placeholder = "Enter your ssn">
 			<br/>
 			
-			<a href = "index">	
+			<a href = "${pageContext.request.contextPath}/index">	
 				<button type="button" class="btn btn-primary">Log In</button>
 				 </a>
 				<button type="submit" class="btn btn-success">Register/Sign Up</button>

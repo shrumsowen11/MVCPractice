@@ -18,10 +18,10 @@ public interface EmployeeService {
 	EmployeeDTO employeeByUserId(String userId);
 	Optional<EmployeeDTO> optionalEmployeeByEmail(String email);
 
-	EmployeeDTO employeeLogin(String email, String password);
+	Optional<EmployeeDTO> employeeLogin(String email, String password);
     
     void update(EmployeeDTO employeeDTO);
-	void updatePassword(String email, String password);
+	String updatePassword(String email, String password);
 	void updateEmployeeActiveStatus(String userId);
     
     void deleteById(int eID);

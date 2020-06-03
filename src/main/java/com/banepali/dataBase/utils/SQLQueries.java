@@ -2,7 +2,7 @@ package com.banepali.dataBase.utils;
 
 public interface SQLQueries {
 
-    String INSERT_IN_EMP_TBL = "insert  into employee_tbl (eid ,userid, password, name, email, DOB, mobile, salary, ssn, createdate, updatedate) values (?,?,?,?,?,?,?,?,?,?,?) ";
+    String INSERT_IN_EMP_TBL = "insert  into employee_tbl ( userid, password, name, email,DOB, mobile, salary, ssn, createdate, updatedate) values (?,?,?,?,?,?,?,?,?,?) ";
 
     String SELECT_ALL_EMPLOYEES = "select  eid ,userid, password, name, email,DOB, mobile, salary, ssn, createdate, updatedate, role, startTime,endTime,active from employee_tbl ";
     String SELECT_ALL_USERID = "select  userid from employee_tbl ";

@@ -58,7 +58,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public EmployeeDTO employeeById(int eID) {
-		
+
 		EmployeeEntity employeeEntity = employeeDao.employeeById(eID);
 		EmployeeDTO employeeDTO = new EmployeeDTO();
 		BeanUtils.copyProperties(employeeEntity, employeeDTO);
@@ -91,18 +91,26 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public EmployeeDTO employeeLogin(String email, String password) { // Optional<> because if there is not
-																			// userid associated there, then no
-																			// output.
-		EmployeeEntity employeeEntity = employeeDao.employeeLogin(email,password);
+	public Optional<EmployeeDTO> employeeLogin(String email, String password) {
+		Optional<EmployeeEntity> optionalEmplEntity = employeeDao.employeeLogin(email, password);
 		EmployeeDTO employeeDTO = null;
-		if(employeeEntity != null) {
-			//employeeDTO = new EmployeeDTO();
-			BeanUtils.copyProperties(employeeEntity, employeeDTO);
+		if (optionalEmplEntity.isPresent()) { 
+			employeeDTO = new EmployeeDTO();
+			BeanUtils.copyProperties(optionalEmplEntity, employeeDTO);
 		}
-		return employeeDTO;
+		return Optional.ofNullable(employeeDTO);
 
 	}
+
+	/*
+	 * @Override public EmployeeDTO employeeLogin(String email, String password) {
+	 * EmployeeEntity emplEntity = employeeDao.employeeLogin(email,password);
+	 * EmployeeDTO employeeDTO = null; if(emplEntity != null) { employeeDTO = new
+	 * EmployeeDTO(); BeanUtils.copyProperties(emplEntity, employeeDTO); } return
+	 * employeeDTO;
+	 * 
+	 * }
+	 */
 
 	@Override
 	public void update(EmployeeDTO employeeDTO) {
@@ -131,9 +139,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 	// To Be Done: public String/void updateEmployeeByUserId(EmployeeEntity
 	// employeeEntity)
 
-	@Override 
-	public void updatePassword(String email, String password) {
-		employeeDao.updatePassword(email, password);
+	@Override
+	public String updatePassword(String email, String password) {
+		return employeeDao.updatePassword(email, password);
 		// change the return type to String, pass a message saying that the password is
 		// updated
 	}

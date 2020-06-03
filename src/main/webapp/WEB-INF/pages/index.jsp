@@ -64,13 +64,12 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 							
 						<h3 style="color: #e5fb2f/* light yellow */">Sign In:</h3>
 						<label for="email" style="color:white"> <b>Email Address* </b></label>
-						 <input type="email" class="form-control" name="temail" 
-							<%-- value = "${updatedDataEmail}" --%> required
+						 <input type="email" class="form-control" name="temail" required
 							placeholder="Enter your Email"> <br /> 
 							
 							
-						<label for="password" style="color:white"><b>Password* </b> </label> <input
-							type="password" class="form-control" name="password" required
+						<label for="password" style="color:white"><b>Password* </b> </label> 
+						<input type="password" class="form-control" name="password" required
 							 placeholder="Enter your password"> <br />
 
 

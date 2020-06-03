@@ -22,13 +22,15 @@ public class DashboardController {
 
 	@Autowired
 	private EmployeeService employeeService;
+	
+	
 
 	@GetMapping("/showAllContactInfo")
 	public String contactUs() {
 		return "showAllContactInfo";
 	}
 		
-	@PostMapping("/validateEmail")
+	@PostMapping("/showAllContactInfo")
 	public String contactUsPost(@RequestParam String temail, Model model, HttpSession session) {
 		List<EmployeeDTO> employeeList = new ArrayList<EmployeeDTO>();
 		employeeList = employeeService.findAll();

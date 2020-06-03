@@ -37,7 +37,7 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 
 		<div class="form-group" style="width: 50%">
 
-			<form action="index.jsp" >
+			<form action="index" >
 
 				<button type="submit" class="btn btn-success">Click here to	Log In 
 				
