@@ -112,6 +112,7 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 					<th>Email</th>
 					<th>DOB(YYYY-MM-DD)</th>
 					<th>Mobile Number</th>
+					<th>Photo</th>
 					<th>Delete/Edit</th>
 			
 				</tr>
@@ -129,6 +130,7 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 					<td>${entity.email}</td>
 					<td>${entity.date}</td>
 					<td>${entity.mobile}</td>
+					<td><img src="${pageContext.request.contextPath}/image?eID=${entity.eID}" style="height: 100px;"></td>
 					<td>
 					<c:if test="${entity.email !=sessionScope.userData.email}">
 					<a href="deletePerson?email=${entity.email}	">

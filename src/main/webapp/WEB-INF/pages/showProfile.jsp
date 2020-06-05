@@ -51,7 +51,7 @@
 </head>
  <body
 style="background-image: url(Images/chinaTemple.jpg); background-size:cover; background-attachment:fixed; height:100%; width:100%">	
-<header class = "header"><b style = "margin-left: 50px;">Hello! ${sessionScope.userData.name}</b></header>
+<header class = "header"><b style = "margin-left: 50px;">Hello! ${userData.name}</b></header>
 <br/>
 <br/>
 	<div class="container mb-3 mt-3">
@@ -60,7 +60,7 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 		<img src="Images/beatifulScene.jfif"
 			style="height: 180px">
 		
-		<a href="dashboard.jsp">
+		<a href="dashboard">
 			<button type="button" class="btn btn-success">Go Back</button>
 		</a>
 		<a href="logout"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
@@ -131,6 +131,11 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 					<tr>
 					<th>UpdateDate</th>
 					<td>${entity.updateDate}</td>
+					</tr>
+					
+					<tr>
+					<th>Profile Picture</th>
+					<td><img src="${pageContext.request.contextPath}/image?eID=${userData.eID}" style="height: 100px;"></td>
 					</tr>
 
 		</table>

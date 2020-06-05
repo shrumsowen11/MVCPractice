@@ -17,9 +17,9 @@ public interface EmployeeDao {
     EmployeeEntity employeeById(int eID);
     EmployeeEntity employeeByEmail(String email);
     EmployeeEntity employeeByUserId(String userId);
-	Optional<EmployeeEntity> optionalEmployeeByEmail(String email);
+	EmployeeEntity optionalEmployeeByEmail(String email);
 
-    Optional<EmployeeEntity> employeeLogin(String email, String password);
+    EmployeeEntity employeeLogin(String email, String password);
     
     void update(EmployeeEntity entity);
 	String updatePassword(String email, String password);
@@ -34,6 +34,8 @@ public interface EmployeeDao {
 
 	Time getStartTime();
 	Time getEndTime();
+
+	byte[] findImageById(int sid);
 
 	
 

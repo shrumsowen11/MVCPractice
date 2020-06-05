@@ -18,7 +18,8 @@ public interface EmployeeService {
 	EmployeeDTO employeeByUserId(String userId);
 	Optional<EmployeeDTO> optionalEmployeeByEmail(String email);
 
-	Optional<EmployeeDTO> employeeLogin(String email, String password);
+	EmployeeDTO employeeLogin(String email, String password); 
+	//different than EmployeeEntity, because "IndexController" will check if the received value is null or not null
     
     void update(EmployeeDTO employeeDTO);
 	String updatePassword(String email, String password);
@@ -31,4 +32,6 @@ public interface EmployeeService {
 
 	Time getStartTime();
 	Time getEndTime();
+
+	byte[] findImageById(int sid);
 }

@@ -4,6 +4,8 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class EmployeeEntity {
     private int eID;
     private String userId;
@@ -20,17 +22,14 @@ public class EmployeeEntity {
     private Time startTime; 
     private Time endTime;
     private String active;
-	
+	private byte[] bPhoto;
+
 	public EmployeeEntity() { }
-	 
-  
-
-
 
 
 	public EmployeeEntity(int eID, String userId, String password, String name, String email, Date date, long mobile,
 			double salary, long ssn, Timestamp createDate, Timestamp updateDate, String role, Time startTime,
-			Time endTime, String active) {
+			Time endTime, String active, byte[] bPhoto) {
 		super();
 		this.eID = eID;
 		this.userId = userId;
@@ -47,66 +46,34 @@ public class EmployeeEntity {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.active = active;
+		this.bPhoto = bPhoto;
 	}
 
-
-
-
-
-
+	
 	public Time getStartTime() {
 		return startTime;
 	}
-
-
-
-
-
 
 	public void setStartTime(Time startTime) {
 		this.startTime = startTime;
 	}
 
 
-
-
-
-
 	public Time getEndTime() {
 		return endTime;
 	}
-
-
-
-
-
 
 	public void setEndTime(Time endTime) {
 		this.endTime = endTime;
 	}
 
-
-
-
-
-
 	public String getActive() {
 		return active;
 	}
 
-
-
-
-
-
 	public void setActive(String active) {
 		this.active = active;
 	}
-
-
-
-
-
 
 	public String getRole() {
 		return role;
@@ -196,6 +163,27 @@ public class EmployeeEntity {
         this.createDate = createDate;
     }
 
+    public Timestamp getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Timestamp updateDate) {
+        this.updateDate = updateDate;
+    }
+
+
+
+
+	public byte[] getbPhoto() {
+		return bPhoto;
+	}
+
+
+	public void setbPhoto(byte[] bPhoto) {
+		this.bPhoto = bPhoto;
+	}
+    
+    
     @Override
 	public String toString() {
 		return "EmployeeEntity [eID=" + eID + ", userId=" + userId + ", password=" + password + ", name=" + name
@@ -209,13 +197,6 @@ public class EmployeeEntity {
 
 
 
-	public Timestamp getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Timestamp updateDate) {
-        this.updateDate = updateDate;
-    }
-
+	
    
 }

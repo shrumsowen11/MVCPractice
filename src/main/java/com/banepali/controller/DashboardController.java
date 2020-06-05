@@ -1,15 +1,19 @@
 package com.banepali.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.banepali.controller.dto.EmployeeDTO;
@@ -23,20 +27,12 @@ public class DashboardController {
 	@Autowired
 	private EmployeeService employeeService;
 	
-	
-
 	@GetMapping("/showAllContactInfo")
-	public String contactUs() {
-		return "showAllContactInfo";
-	}
-		
-	@PostMapping("/showAllContactInfo")
-	public String contactUsPost(@RequestParam String temail, Model model, HttpSession session) {
+	public String contactUsPost(Model model) {
 		List<EmployeeDTO> employeeList = new ArrayList<EmployeeDTO>();
 		employeeList = employeeService.findAll();
 		model.addAttribute("employeeList", employeeList);
-	
-	return "showAllContacts";	
+		return "showAllContacts";	
 	}
 	/*
 	 * @InitBinder public void initBinder(WebDataBinder binder) {
@@ -61,10 +57,6 @@ public String logout(HttpSession session,Model model) {
 	return "logout";
 }
 
-
-
-
-
 @GetMapping("/showProfile")
 public String showProfile(@RequestParam String email, HttpSession session,Model model) {
 
@@ -74,23 +66,29 @@ public String showProfile(@RequestParam String email, HttpSession session,Model 
 	return "showProfile";
 
 }
+@InitBinder
+public void initBinder(WebDataBinder binder) {
+	binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));
+}
 
 @GetMapping("/showAllEmployees")
-public String showAllEmployees(@RequestParam String email, HttpSession session,Model model) {
+public String showAllEmployees(Model model) {
 
 	List<EmployeeDTO> employeeDTOs = new ArrayList<EmployeeDTO>();
 	employeeDTOs = employeeService.findAll();
-	model.addAttribute("entity", employeeDTOs);
+	model.addAttribute("employeeList", employeeDTOs);
 	return "showAllData";
 
 }
 
 @GetMapping("/showAllEmployeesBlockTime")
-public String showAllEmployeesBlockTime(@RequestParam String email, HttpSession session,Model model) {
+public String showAllEmployeesBlockTime(Model model) {
 	List<EmployeeDTO> employeeList = new ArrayList<EmployeeDTO>();
 	employeeList = employeeService.findAll();
 	model.addAttribute("employeeList", employeeList);
 	return "showAllDataBlockTime";
 
 }
+
+
 }

@@ -84,21 +84,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Optional<EmployeeDTO> optionalEmployeeByEmail(String email) {
-		Optional<EmployeeEntity> employeeEntity = employeeDao.optionalEmployeeByEmail(email);
+		EmployeeEntity employeeEntity = employeeDao.optionalEmployeeByEmail(email);
 		EmployeeDTO employeeDTO = new EmployeeDTO();
 		BeanUtils.copyProperties(employeeEntity, employeeDTO);
 		return Optional.ofNullable(employeeDTO);
 	}
 
 	@Override
-	public Optional<EmployeeDTO> employeeLogin(String email, String password) {
-		Optional<EmployeeEntity> optionalEmplEntity = employeeDao.employeeLogin(email, password);
+	public EmployeeDTO employeeLogin(String email, String password) {
+		EmployeeEntity optionalEmplEntity = employeeDao.employeeLogin(email, password);
 		EmployeeDTO employeeDTO = null;
-		if (optionalEmplEntity.isPresent()) { 
+		//if (optionalEmplEntity!= null) { 
 			employeeDTO = new EmployeeDTO();
 			BeanUtils.copyProperties(optionalEmplEntity, employeeDTO);
-		}
-		return Optional.ofNullable(employeeDTO);
+		//}
+		return employeeDTO;
 
 	}
 
@@ -112,6 +112,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 	 * }
 	 */
 
+	
+	@Override
+	public byte[] findImageById(int sid) {
+		return employeeDao.findImageById(sid);
+	}
+	
+	
 	@Override
 	public void update(EmployeeDTO employeeDTO) {
 		EmployeeEntity employeeEntity = new EmployeeEntity();

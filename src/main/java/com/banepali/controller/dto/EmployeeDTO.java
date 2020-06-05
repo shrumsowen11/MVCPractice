@@ -4,6 +4,8 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class EmployeeDTO {
 	private int eID;
     private String userId;
@@ -20,14 +22,20 @@ public class EmployeeDTO {
     private Time startTime; 
     private Time endTime;
     private String active;
+	private MultipartFile photo;
+	private byte[] bPhoto;
+	
 	
 	public EmployeeDTO() { }
 
 	
 	
+	
+
+
 	public EmployeeDTO(int eID, String userId, String password, String name, String email, Date date, long mobile,
 			double salary, long ssn, Timestamp createDate, Timestamp updateDate, String role, Time startTime,
-			Time endTime, String active) {
+			Time endTime, String active, MultipartFile photo, byte[] bPhoto) {
 		super();
 		this.eID = eID;
 		this.userId = userId;
@@ -44,12 +52,19 @@ public class EmployeeDTO {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.active = active;
+		this.photo = photo;
+		this.bPhoto = bPhoto;
 	}
+
+
+
+
 
 
 	public Time getStartTime() {
 		return startTime;
 	}
+
 
 	public void setStartTime(Time startTime) {
 		this.startTime = startTime;
@@ -167,6 +182,24 @@ public class EmployeeDTO {
     public void setUpdateDate(Timestamp updateDate) {
         this.updateDate = updateDate;
     }
+    public MultipartFile getPhoto() {
+		return photo;
+	}
+
+
+	public void setPhoto(MultipartFile photo) {
+		this.photo = photo;
+	}
+
+
+	public byte[] getbPhoto() {
+		return bPhoto;
+	}
+
+
+	public void setbPhoto(byte[] bPhoto) {
+		this.bPhoto = bPhoto;
+	}
 
     @Override
 	public String toString() {

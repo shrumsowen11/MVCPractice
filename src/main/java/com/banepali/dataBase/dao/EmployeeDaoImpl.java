@@ -2,13 +2,16 @@ package com.banepali.dataBase.dao;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.support.SqlLobValue;
+import org.springframework.jdbc.support.lob.DefaultLobHandler;
+import org.springframework.jdbc.support.lob.LobHandler;
 import org.springframework.stereotype.Repository;
 
 import com.banepali.dataBase.dao.entity.EmployeeEntity;
@@ -20,6 +23,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
+	LobHandler lobHandler=new DefaultLobHandler();
+	
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}
@@ -30,10 +35,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public void save(EmployeeEntity entity) {
+		// photos in java cannot be passed as it is, so we need to convert the
+		// byte form of the photo into the sqlLobValue
+        SqlLobValue sqlLobValue=new SqlLobValue(entity.getbPhoto(),lobHandler);
+		
+		
 		Object[] entityData = { entity.getUserId(),entity.getPassword(),entity.getName(),
 				entity.getEmail(), new java.sql.Date(entity.getDate().getTime()), entity.getMobile(), 
-				entity.getSalary(),entity.getSsn(), entity.getCreateDate(), entity.getUpdateDate()};
-		jdbcTemplate.update(SQLQueries.INSERT_IN_EMP_TBL, entityData);
+				entity.getSalary(),entity.getSsn(), entity.getCreateDate(), entity.getUpdateDate(), sqlLobValue};
+		jdbcTemplate.update(SQLQueries.INSERT_IN_EMP_TBL, entityData, new int[] {Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.DATE,
+				Types.BIGINT,Types.DOUBLE, Types.BIGINT,Types.TIMESTAMP,Types.TIMESTAMP,Types.BLOB});
 	}
 
 	@Override
@@ -47,8 +58,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public List<String> findAllUserId() {
 		List<String> userIds = new ArrayList<String>();
-		userIds = jdbcTemplate.query(SQLQueries.SELECT_ALL_USERID, new BeanPropertyRowMapper<>(String.class));
-		System.out.println(userIds);
+		userIds = jdbcTemplate.queryForList(SQLQueries.SELECT_ALL_USERID, (String.class));
+		System.out.println("From MVCPractise/EmployeeDaoImpl "+ userIds);
 		return userIds;
 	}
 
@@ -65,7 +76,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public EmployeeEntity employeeById(int eID) {
-		EmployeeEntity employeeEntities = (EmployeeEntity) jdbcTemplate.queryForObject(SQLQueries.SELECT_EMP_BY_EID,
+		EmployeeEntity employeeEntities =  jdbcTemplate.queryForObject(SQLQueries.SELECT_EMP_BY_EID,
 				new Object[] { eID }, new BeanPropertyRowMapper<>(EmployeeEntity.class));
 		return employeeEntities;
 	}
@@ -79,25 +90,31 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public EmployeeEntity employeeByEmail(String email) {
-		EmployeeEntity employeeEntities = (EmployeeEntity) jdbcTemplate.query(SQLQueries.SELECT_EMP_BY_EMAIL,
+		EmployeeEntity employeeEntities =  jdbcTemplate.queryForObject(SQLQueries.SELECT_EMP_BY_EMAIL,
 				new Object[] { email }, new BeanPropertyRowMapper<>(EmployeeEntity.class));
 		return employeeEntities;
 
 	}
 
 	@Override
-	public Optional<EmployeeEntity> optionalEmployeeByEmail(String email) {
+	public EmployeeEntity optionalEmployeeByEmail(String email) {
 		EmployeeEntity employeeEntities = (EmployeeEntity) jdbcTemplate.queryForObject(SQLQueries.SELECT_EMP_BY_EMAIL,
 				new Object[] { email }, new BeanPropertyRowMapper<>(EmployeeEntity.class));
-		return Optional.ofNullable(employeeEntities);
+		return employeeEntities;
 	}
 
 	@Override
-	public Optional<EmployeeEntity> employeeLogin(String email, String password) {
-		EmployeeEntity employeeEntities = jdbcTemplate.queryForObject(SQLQueries.CHECK_LOGIN_USER,
+	public EmployeeEntity employeeLogin(String email, String password) {
+		EmployeeEntity employeeEntities = (EmployeeEntity) jdbcTemplate.queryForObject(SQLQueries.CHECK_LOGIN_USER,
 				new Object[] { email, password }, new BeanPropertyRowMapper<>(EmployeeEntity.class));
-		return Optional.ofNullable(employeeEntities);
+		return employeeEntities;
 
+	}
+	
+	@Override
+	public byte[]  findImageById(int  eid) {
+		byte[] bphoto = jdbcTemplate.queryForObject(SQLQueries.FIND_IMAGE_BY_ID,new Object[] {eid},byte[].class);
+		return bphoto;
 	}
 
 	/*

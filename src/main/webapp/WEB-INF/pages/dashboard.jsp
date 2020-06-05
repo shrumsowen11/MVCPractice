@@ -25,7 +25,7 @@
 style="background-image: url(Images/chinaTemple.jpg); background-size:cover; background-attachment:fixed; height:100%; width:100%">	
 
 <header class = "header">
-	<b style = " position: relative;  left: 50px; color:white"><br/>Hello! ${sessionScope.userData.name}</b> 
+	<b style = " position: relative;  left: 50px; color:white"><br/>Hello! ${userData.name}</b> 
 	<a href="${pageContext.request.contextPath}/showAllContactInfo"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
 			<button type="button" class="btn btn-warning" style="position: absolute; top:5px; right: 90px;">Contact Us</button>
 		</a>
@@ -46,7 +46,7 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 				<!--****Make the connection to the preferred DataBase and Start Xamppp****  -->
  
 		
-		<a href="showProfile?email=${sessionScope.userData.email}">
+		<a href="showProfile?email=${userData.email}">
 					<button type="button" class="btn btn-primary">Profile</button>
 				</a>
 				<a href="showAllEmployees"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
