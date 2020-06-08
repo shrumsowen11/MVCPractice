@@ -171,5 +171,30 @@ public class IndexController {
 		}
 		return output;
 	}
+	
+	@GetMapping("/getNewPasswords")
+	public String getNewPasswords() {
+		return "getNewPasswords";
+	}
+	@PostMapping("/updatePasswords")
+	public String getNewPasswordsPost(@RequestParam String password1, @RequestParam String password2, @RequestParam String email, HttpSession session, Model model) {
+		if (password1.equals(password2)) {
+
+			employeeService = new EmployeeServiceImpl();
+			String result = employeeService.updatePassword(email, password1);
+
+			if (result.equals("Update Successful")) {
+				model.addAttribute("message", "Password changed successfully.");
+				return "index";
+			} else {
+				model.addAttribute("message", "Server Connection problem. Please Try Again.");
+				return "getNewPasswords";
+			}
+
+		} else {
+			model.addAttribute("message", "Passwords do not match.");
+			return "getNewPasswords";
+		}
+	}
 
 }
