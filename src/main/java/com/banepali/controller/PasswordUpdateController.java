@@ -22,8 +22,8 @@ public class PasswordUpdateController {
 	public String getNewPasswords() {
 		return "getNewPasswords";
 	}
-	@PostMapping("/getNewPasswords")
-	public String getNewPasswords(@RequestParam String password1, @RequestParam String password2, @RequestParam String email, HttpSession session, Model model) {
+	@PostMapping("/updatePasswords")
+	public String getNewPasswordsPost(@RequestParam String password1, @RequestParam String password2, @RequestParam String email, HttpSession session, Model model) {
 		if (password1.equals(password2)) {
 
 			employeeService = new EmployeeServiceImpl();

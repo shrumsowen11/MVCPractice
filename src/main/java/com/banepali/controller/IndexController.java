@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -69,7 +68,7 @@ public class IndexController {
 		// Similarly, for setting the data and sending them, we use the Model
 
 		/*
-		 * EmployeeDTO optionalEmplDTO = empl oyeeService.employeeLogin(temail,
+		 * EmployeeDTO optionalEmplDTO = employeeService.employeeLogin(temail,
 		 * password);
 		 * 
 		 * if (optionalEmplDTO != null) { session.setAttribute("userData",
@@ -81,14 +80,18 @@ public class IndexController {
 		 * }
 		 */		
 		EmployeeDTO optionalEmplDTO = employeeService.employeeLogin(temail, password);
-
+		// As we do not guarantee the incoming emploeeeEntity is the actual Employee or a null value, 
+		// we need to check. 
+		// --> checking if the incoming employeeEntity is null or some actual values
+		// --> this actually needs to be done in the "ServiceImpl"
 		if (optionalEmplDTO != null) {
 			session.setAttribute("userData", optionalEmplDTO);
+			//session.setAttribute("userData", optionalEmplDTO.get());  --> is done when .isPresent() is used
 			// session.setAttribute("isLoggedIn", true);
 			return "dashboard";
 		} else {
 			model.addAttribute("message", "Sorry, Incorrect Email or password.");
-			return "redirect:/index";
+			return "index";
 		}
 	}
 
@@ -149,20 +152,24 @@ public class IndexController {
 		return "validateEmail";
 	}
 
-	@PostMapping("/validateEmail")
-	public String validateEmail(@RequestParam String email, HttpSession session, Model model) {
+	@PostMapping("/validateEmailSearch")
+	public String validateEmail(@RequestParam String temail, HttpSession session, Model model) {
 		employeeService = new EmployeeServiceImpl();
-		Optional<EmployeeDTO> employeeDTO = employeeService.optionalEmployeeByEmail(email);
-		System.out.println("From IndexController" + email);
-		if (employeeDTO.isPresent()) {
-			session.setAttribute("userData", employeeDTO.get());
-			System.out.println(email + " found. --> From IndexController");
-			// "req.setAttribut()"//this only gives to the forwarded page
-			return "getNewPasswords";
+		EmployeeDTO employeeDTO = employeeService.optionalEmployeeByEmail(temail);
+		System.out.println("From IndexController" + temail);
+		String output = null;
+		try {
+		if (employeeDTO != null) {
+			session.setAttribute("userData", employeeDTO);
+			System.out.println(temail + " found. --> From IndexController");
+			output =  "getNewPasswords";
 		} else {
 			model.addAttribute("message", "Sorry, Email not found. Try again");
-			return "validateEmail";
+			output =  "validateEmail";
+		}}catch(Exception e){
+			
 		}
+		return output;
 	}
 
 }

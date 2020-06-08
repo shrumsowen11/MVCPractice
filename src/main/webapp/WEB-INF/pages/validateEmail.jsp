@@ -51,7 +51,7 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 
 		<div class="form-group" style="width: 50%">
 
-			<form action="getNewPasswords" method="post">
+			<form action="validateEmailSearch" method="post">
 
 			<!-- when you do not write this "method", then automatically, it calls the doGet() method and this get method will show all the data(password also) in the browser title. -->
 			<!--methods are "post(secured), put, delete, patch, get(default and not secure)"  -->

@@ -4,8 +4,6 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class EmployeeEntity {
     private int eID;
     private String userId;

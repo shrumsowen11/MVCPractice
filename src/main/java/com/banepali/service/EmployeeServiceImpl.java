@@ -3,7 +3,6 @@ package com.banepali.service;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.banepali.controller.dto.EmployeeDTO;
 import com.banepali.dataBase.dao.EmployeeDao;
 import com.banepali.dataBase.dao.entity.EmployeeEntity;
+import com.banepali.dataBase.utils.Copy;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -83,21 +83,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Optional<EmployeeDTO> optionalEmployeeByEmail(String email) {
+	public EmployeeDTO optionalEmployeeByEmail(String email) {
 		EmployeeEntity employeeEntity = employeeDao.optionalEmployeeByEmail(email);
 		EmployeeDTO employeeDTO = new EmployeeDTO();
 		BeanUtils.copyProperties(employeeEntity, employeeDTO);
-		return Optional.ofNullable(employeeDTO);
+		return employeeDTO;
 	}
 
 	@Override
 	public EmployeeDTO employeeLogin(String email, String password) {
 		EmployeeEntity optionalEmplEntity = employeeDao.employeeLogin(email, password);
 		EmployeeDTO employeeDTO = null;
-		//if (optionalEmplEntity!= null) { 
-			employeeDTO = new EmployeeDTO();
-			BeanUtils.copyProperties(optionalEmplEntity, employeeDTO);
-		//}
+		// if (optionalEmplEntity!= null) {
+		employeeDTO = new EmployeeDTO();
+		BeanUtils.copyProperties(optionalEmplEntity, employeeDTO);
+		// }
 		return employeeDTO;
 
 	}
@@ -112,13 +112,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	 * }
 	 */
 
-	
 	@Override
 	public byte[] findImageById(int sid) {
 		return employeeDao.findImageById(sid);
 	}
-	
-	
+
 	@Override
 	public void update(EmployeeDTO employeeDTO) {
 		EmployeeEntity employeeEntity = new EmployeeEntity();
@@ -138,13 +136,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return endTime;
 	}
 
-	@Override
-	public int getIncrementedEId() {
-		return employeeDao.getIncrementedEId();
-	}
 
 	// To Be Done: public String/void updateEmployeeByUserId(EmployeeEntity
 	// employeeEntity)
+
+	@Override
+	public void updateEmployee(EmployeeDTO employeeDTO) {
+		EmployeeDTO dbemployeeDTO = employeeByUserId(employeeDTO.getUserId());
+		System.out.println("From EmployeeServiceImpl(.updateEmployee() with NULL) :" + dbemployeeDTO);
+		Copy.copyNonNullProperties(employeeDTO, dbemployeeDTO);
+		System.out.println("From EmployeeServiceImpl(.updateEmployee() without null) :" + dbemployeeDTO);
+		// Copy is separately made file in "com.banepali.dataBase.utils.Copy"
+		EmployeeEntity employeeEntity = new EmployeeEntity();
+		BeanUtils.copyProperties(dbemployeeDTO, employeeEntity);
+		employeeDao.updateEmployee(employeeEntity);
+	}
 
 	@Override
 	public String updatePassword(String email, String password) {

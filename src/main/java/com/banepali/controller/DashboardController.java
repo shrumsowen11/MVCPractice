@@ -45,12 +45,7 @@ public class DashboardController {
 @GetMapping("/logout")
 public String logout(HttpSession session,Model model) {
 	//session = model.addAttribute(attributeValue)
-	/*
-	 * doing "false" --> do not make a new session here, rather gives me the old session.-->
-	 * but if you do not have an old session, it will automatically make a new
-	 * session for you, but still it keeps the value of the
-	 *  variable "session" --> NULL
-	 */
+	
 	//if(session != null) {
 		session.invalidate();
 	//}

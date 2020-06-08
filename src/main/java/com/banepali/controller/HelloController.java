@@ -9,9 +9,9 @@ public class HelloController {
 
 	//Method  = GET
 	//Action  = index   //calling this in website
-	@GetMapping("/index")
+	@GetMapping("/prac")
 	public String aclass() {
-		return "index";  
+		return "prac";  
 		//here, you do not give the extension, 
 		//otherwise that will be depended upon 
 		//that specific extension, which is not good practice

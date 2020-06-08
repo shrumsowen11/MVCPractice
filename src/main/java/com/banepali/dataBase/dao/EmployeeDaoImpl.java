@@ -76,7 +76,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public EmployeeEntity employeeById(int eID) {
-		EmployeeEntity employeeEntities =  jdbcTemplate.queryForObject(SQLQueries.SELECT_EMP_BY_EID,
+		EmployeeEntity employeeEntities =  (EmployeeEntity) jdbcTemplate.queryForObject(SQLQueries.SELECT_EMP_BY_EID,
 				new Object[] { eID }, new BeanPropertyRowMapper<>(EmployeeEntity.class));
 		return employeeEntities;
 	}
@@ -148,16 +148,18 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return endTime;
 	}
 
+
+	
 	@Override
-	public int getIncrementedEId() {
-		int eId = 1;
-		eId = (Integer) jdbcTemplate.queryForObject(SQLQueries.SELECT_MAX_EID, int.class);
-		return eId++;
+	public void updateEmployee(EmployeeEntity employeeEntity) {
+		Object[] entityData = { employeeEntity.getUserId(), employeeEntity.getPassword(), employeeEntity.getName(),
+				employeeEntity.getEmail(), new Date(employeeEntity.getDate().getTime()), employeeEntity.getMobile(), employeeEntity.getSalary(),
+				employeeEntity.getSsn(), employeeEntity.getCreateDate(), employeeEntity.getUpdateDate() };
+		jdbcTemplate.update(SQLQueries.UPDATE_EMP_TBL_BY_USERID, entityData);
+	
+
 	}
-
-	// To Be Done: public String/void updateEmployeeByUserId(EmployeeEntity
-	// employeeEntity)
-
+	
 	@Override
 	public String updatePassword(String email, String password) {
 		int rowCount = 0;

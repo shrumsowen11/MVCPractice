@@ -134,18 +134,13 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 					<td>
 					<c:if test="${entity.email !=sessionScope.userData.email}">
 					<a href="deletePerson?email=${entity.email}	">
-							<!-- We are making a Servlet class named "deletePersonServlet" and "?" -> What you want to send as 
-						to that Servlet Class "email=" and value of the email, which is being sent -->
-
-							<!--  Whenever you send hyperlink, the method doGet() is called. -->
 						<button class = "myBtn deleteBtn">
 							<!--  FA icons -->
 							<i class="far fa-trash-alt fa-sm"></i>
 						</button>
 						
 					</a>
-					<!--  Whenever you send hyperlink, the method doGet() is called. -->
-					<a href = "getEmployeeDataForEdit?userId=${entity.userId}" >
+					<a href = "editPerson?userId=${entity.userId}" >
 					<button class="myBtn editBtn"><i class="fa fa-edit fa-sm"></i></button>
 					</a>
 					</c:if>
