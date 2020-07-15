@@ -105,9 +105,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public EmployeeEntity employeeLogin(String email, String password) {
-		EmployeeEntity employeeEntities = (EmployeeEntity) jdbcTemplate.queryForObject(SQLQueries.CHECK_LOGIN_USER,
+		List<EmployeeEntity> employeeEntities = jdbcTemplate.query(SQLQueries.CHECK_LOGIN_USER,
 				new Object[] { email, password }, new BeanPropertyRowMapper<>(EmployeeEntity.class));
-		return employeeEntities;
+		return  employeeEntities.size()== 0 ? null : employeeEntities.get(0);
 
 	}
 	
@@ -152,11 +152,20 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	
 	@Override
 	public void updateEmployee(EmployeeEntity employeeEntity) {
-		Object[] entityData = { employeeEntity.getUserId(), employeeEntity.getPassword(), employeeEntity.getName(),
-				employeeEntity.getEmail(), new Date(employeeEntity.getDate().getTime()), employeeEntity.getMobile(), employeeEntity.getSalary(),
-				employeeEntity.getSsn(), employeeEntity.getCreateDate(), employeeEntity.getUpdateDate() };
+		Object[] entityData = { employeeEntity.geteID(),
+				employeeEntity.getPassword(),
+				employeeEntity.getName(),
+				employeeEntity.getEmail(),
+				new Date(employeeEntity.getDate().getTime()), 
+				employeeEntity.getMobile(), employeeEntity.getSalary(),
+				employeeEntity.getSsn(), employeeEntity.getCreateDate(), employeeEntity.getUpdateDate(), employeeEntity.getUserId() };
 		jdbcTemplate.update(SQLQueries.UPDATE_EMP_TBL_BY_USERID, entityData);
 	
+		/*
+		 * String UPDATE_EMP_TBL_BY_USERID =
+		 * "update employee_tbl set eid = ? ,  password = ?,name = ?, email = ?, DOB = ?, mobile = ?, salary = ?, ssn = ?, createdate = ?, updatedate = ? where userid = ?"
+		 * ;
+		 */
 
 	}
 	

@@ -21,7 +21,7 @@ public interface SQLQueries {
     
     String UPDATE_EMP_TBL_BY_EID = "update employee_tbl set eid = ? ,userid = ?,  password = ?,name = ?, email = ?, DOB = ?, mobile = ?, salary = ?, ssn = ?, createdate = ?, updatedate = ? where eid = ?";
     String UPDATE_EMP_PASSWORD = "update employee_tbl set  password = ? where email = ?";
-    String UPDATE_EMP_TBL_BY_USERID = "update employee_tbl set eid = ? ,userid = ?,  password = ?,name = ?, email = ?, DOB = ?, mobile = ?, salary = ?, ssn = ?, createdate = ?, updatedate = ? where userid = ?";
+    String UPDATE_EMP_TBL_BY_USERID = "update employee_tbl set eid = ? ,  password = ?,name = ?, email = ?, DOB = ?, mobile = ?, salary = ?, ssn = ?, createdate = ?, updatedate = ? where userid = ?";
     
     
     String UPDATE_EMP_ACTIVE_STATUS_OFF = "UPDATE employee_tbl SET active = \"NO\" where userid =?";

@@ -94,10 +94,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public EmployeeDTO employeeLogin(String email, String password) {
 		EmployeeEntity optionalEmplEntity = employeeDao.employeeLogin(email, password);
 		EmployeeDTO employeeDTO = null;
-		// if (optionalEmplEntity!= null) {
-		employeeDTO = new EmployeeDTO();
-		BeanUtils.copyProperties(optionalEmplEntity, employeeDTO);
-		// }
+		if (optionalEmplEntity != null) {
+			employeeDTO = new EmployeeDTO();
+			BeanUtils.copyProperties(optionalEmplEntity, employeeDTO);
+		}
 		return employeeDTO;
 
 	}
@@ -135,7 +135,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 		Time endTime = employeeDao.getEndTime();
 		return endTime;
 	}
-
 
 	// To Be Done: public String/void updateEmployeeByUserId(EmployeeEntity
 	// employeeEntity)

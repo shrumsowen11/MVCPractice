@@ -35,17 +35,20 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 		</a> <!-- Add a welcome message we the name in it --></header>
 <br/>
 <br/>
-	
-	
-	
 
 	<div class="container mb-3 mt-3">
 	<font class="myTextStyle" face = "Showcard Gothic" size = "5" style="color: #00ffaca6; ">WARLIONS</font><br/><br/>
 		 <img src="Images/beatifulScene.jfif"
 			style="height: 180px">
-				<!--****Make the connection to the preferred DataBase and Start Xamppp****  -->
- 
-		
+
+ 	<h1>You are a valid user and your details are</h1>
+  		   Total Logged in User : =  ${applicationScope.activeSessions}
+  		 <hr/>
+  		 Username :  ${userData.userId}
+  		 <br/>
+  		 Email :  ${userData.email}<br/>
+  		 Name :  ${userData.name}<br/>
+  		  <hr/>
 		<a href="showProfile?email=${userData.email}">
 					<button type="button" class="btn btn-primary">Profile</button>
 				</a>
@@ -58,22 +61,7 @@ style="background-image: url(Images/chinaTemple.jpg); background-size:cover; bac
 					<a href="showAllEmployeesBlockTime"> <!-- Simple Button --> <!-- <button>Show Employees</button> -->
 			<button type="button" class="btn btn-primary">Block Time</button>
 		</a>
-		
-		
-		
-		 
-		<!-- You can make a file like "process.jsp" as we go from 
-		"register.jsp" to "process.jsp", this process file process 
-		the request and sends back to the "register.jsp" page
-		similarly, for logOutProcess, after the LogOut button is clicked,
-		it goes to "LogOutProcess.jsp" and the processes it 
-		and sends back to the "index.jsp" page. -->
-		
-		
-		
 		<hr />
-
-			
 		</div>
 
 
